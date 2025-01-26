@@ -2,10 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { 
     RootState, 
     toggleModal,
-    toggleLogin, 
-    toggleRegister,
-    loginDefault,
-    registerDefault,
+    openLogin,
+    closeLogin,
+    openRegister,
+    closeRegister,
     detaultValues,
 } from '../store';
 
@@ -18,14 +18,14 @@ export const useGlobalStore = () => {
         dispatch( toggleModal() );
     }
 
-    const setToggleLogin = ():void => {
-        dispatch( registerDefault() );
-        dispatch( toggleLogin() );
+    const setOpenLogin = ():void => {
+        dispatch( closeRegister() );
+        dispatch( openLogin() );
     }
 
-    const setToggleRegister = (): void => {
-        dispatch( loginDefault() );
-        dispatch( toggleRegister() );
+    const setOpenRegister = (): void => {
+        dispatch( closeLogin() );
+        dispatch( openRegister() );
     }
 
 
@@ -39,8 +39,8 @@ export const useGlobalStore = () => {
         isOpenRegister,
 
         //  Metodos
-        setToggleLogin,
-        setToggleRegister,
+        setOpenLogin,
+        setOpenRegister,
         setToggleModal,
         setDefault,
     }

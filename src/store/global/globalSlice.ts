@@ -21,16 +21,16 @@ export const  globalSlice = createSlice({
         toggleModal: (state) => {
             state.isModalOpen = !state.isModalOpen;
         },
-        toggleLogin: (state) => {
-            state.isOpenLogin = !state.isOpenLogin;
+        openLogin: (state) => {
+            state.isOpenLogin = true;
         },
-        toggleRegister: (state) => {
-            state.isOpenRegister = !state.isOpenRegister;
+        openRegister: (state) => {
+            state.isOpenRegister = true;
         },
-        loginDefault: (state) => {
+        closeLogin: (state) => {
             state.isOpenLogin = false;
         },
-        registerDefault: (state) => {
+        closeRegister: (state) => {
             state.isOpenRegister = false;
         },
         detaultValues: (state) => {
@@ -43,9 +43,9 @@ export const  globalSlice = createSlice({
 
 export const {
     toggleModal,
-    toggleLogin,
-    toggleRegister,
-    loginDefault,
-    registerDefault,
+    openLogin,
+    closeLogin,
+    openRegister,
+    closeRegister,
     detaultValues,
 } = globalSlice.actions;

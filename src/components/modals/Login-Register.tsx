@@ -1,5 +1,4 @@
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from "@headlessui/react";
-import { useEffect, useState } from "react";
 import { useGlobalStore } from "../../hooks";
 
 const Login = () => {
@@ -8,21 +7,25 @@ const Login = () => {
         isModalOpen,
         isOpenLogin,
         isOpenRegister,
-        setDefault,
-        setToggleLogin,
-        setToggleRegister,
+        setOpenLogin,
+        setOpenRegister,
+        setToggleModal,
     } = useGlobalStore();
 
     const handleOpenRegister = ():void => {
-        setToggleRegister();
+        setOpenRegister();
     }
 
     const handleOpenLogin = ():void => {
-        setToggleLogin();
+        setOpenLogin();
+    }
+
+    const handleCloseModal = ():void => {
+        setToggleModal();
     }
 
     return (
-        <Dialog open={isModalOpen} onClose={() => setDefault()} className="relative z-9999">
+        <Dialog open={isModalOpen} onClose={() => handleCloseModal()} className="relative z-9999">
             <DialogBackdrop
                 transition
                 className="fixed inset-0 bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"

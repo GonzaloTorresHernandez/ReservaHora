@@ -9,14 +9,13 @@ const Header = () => {
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
-    const { setToggleModal, setToggleLogin } = useGlobalStore();
+    const { setToggleModal, setOpenLogin } = useGlobalStore();
 
     const handleOpenModalLogin = ():void => {
         setToggleModal();
-        setToggleLogin();
+        setOpenLogin();
     }
     
-
     return (
         <>
             <header className='bg-dark text-white fixed top-0 left-0 w-full z-50'>
