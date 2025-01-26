@@ -1,23 +1,21 @@
 import { Bars3Icon, ChevronDownIcon, XMarkIcon } from '@heroicons/react/16/solid';
 import { Dialog, DialogPanel, Disclosure, DisclosureButton, DisclosurePanel, Popover, PopoverButton, PopoverGroup, PopoverPanel } from '@headlessui/react';
 import { useState } from 'react';
-import Login from '../modals/Login';
-import Register from '../modals/Register';
-import { useDispatch } from 'react-redux';
-import { toggleLogin } from '../../store';
-
-
+import Login from '../modals/Login-Register';
+import { useGlobalStore } from '../../hooks';
 
 
 const Header = () => {
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
-    const dispatch = useDispatch();
+    const { setToggleModal, setToggleLogin } = useGlobalStore();
 
-    const handleLogin = ():void => {
-        dispatch( toggleLogin() );
+    const handleOpenModalLogin = ():void => {
+        setToggleModal();
+        setToggleLogin();
     }
+    
 
     return (
         <>
@@ -99,7 +97,7 @@ const Header = () => {
                     </PopoverGroup >
 
                     <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                        <a href="#" onClick={() => handleLogin() } className="text-sm/6 font-semibold ">
+                        <a href="#" onClick={() => handleOpenModalLogin() } className="text-sm/6 font-semibold ">
                             Log in <span aria-hidden="true">&rarr;</span>
                         </a>
                     </div>
@@ -168,7 +166,7 @@ const Header = () => {
                                 </div>
                                 <div className="py-6">
                                     <button
-                                        onClick={() => handleLogin() }
+                                        onClick={() => handleOpenModalLogin() }
                                         className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold  hover:bg-gray-50"
                                     >
                                         Log in
@@ -180,8 +178,7 @@ const Header = () => {
                 </Dialog>
             </header>
 
-            {/* <Login isOpenModal={open}/> */}
-            <Register />
+            <Login />
 
         </>
     )
