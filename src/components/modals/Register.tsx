@@ -1,20 +1,21 @@
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from "@headlessui/react";
-import { useEffect, useState } from "react";
 
-interface Props {
-    isOpenModal: boolean;
-}
+import { useDispatch, useSelector } from "react-redux";
+import { RootState, toggleLogin } from "../../store";
 
-const Register = ({ isOpenModal = false }: Props) => {
 
-    const [open, setOpen] = useState<boolean>(isOpenModal);
+const Register = () => {
 
-    useEffect(() => {
-        setOpen(isOpenModal);
-    }, [isOpenModal]);
+    const { isOpenLogin }  = useSelector( (state: RootState) => state.global);
+
+    const dispatch = useDispatch();
+    
+    const handleLogin = ():void => {
+        dispatch( toggleLogin() );
+    }
 
     return (
-        <Dialog open={open} onClose={() => setOpen(false)} className="relative z-9999">
+        <Dialog open={isOpenLogin} onClose={() => handleLogin() } className="relative z-9999">
             <DialogBackdrop
                 transition
                 className="fixed inset-0 bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"

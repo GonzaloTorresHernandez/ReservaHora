@@ -2,6 +2,4 @@
 export * from './store';
 
 //  Slice
-
-
-//  Slice Global
+export * from './global/globalSlice';

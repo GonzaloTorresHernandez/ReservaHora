@@ -3,11 +3,21 @@ import { Dialog, DialogPanel, Disclosure, DisclosureButton, DisclosurePanel, Pop
 import { useState } from 'react';
 import Login from '../modals/Login';
 import Register from '../modals/Register';
+import { useDispatch } from 'react-redux';
+import { toggleLogin } from '../../store';
+
+
+
 
 const Header = () => {
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
-    const [open, setOpen] = useState<boolean>(false);
+
+    const dispatch = useDispatch();
+
+    const handleLogin = ():void => {
+        dispatch( toggleLogin() );
+    }
 
     return (
         <>
@@ -89,7 +99,7 @@ const Header = () => {
                     </PopoverGroup >
 
                     <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                        <a href="#" onClick={() => setOpen(!open)} className="text-sm/6 font-semibold ">
+                        <a href="#" onClick={() => handleLogin() } className="text-sm/6 font-semibold ">
                             Log in <span aria-hidden="true">&rarr;</span>
                         </a>
                     </div>
@@ -158,9 +168,7 @@ const Header = () => {
                                 </div>
                                 <div className="py-6">
                                     <button
-                                        onClick={() => {
-                                            console.log("Abriendo modal");
-                                            setOpen(true);}}
+                                        onClick={() => handleLogin() }
                                         className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold  hover:bg-gray-50"
                                     >
                                         Log in
@@ -173,7 +181,7 @@ const Header = () => {
             </header>
 
             {/* <Login isOpenModal={open}/> */}
-            <Register isOpenModal={open} />
+            <Register />
 
         </>
     )
