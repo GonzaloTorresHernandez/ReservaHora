@@ -1,6 +1,6 @@
 
 
-const Footer = () => {
+const FooterLayout = () => {
     return (
         <footer className='bg-dark text-white fixed bottom-10 left-0 w-full z-50 border-t border-gray-700'>
             <div className="flex flex-wrap justify-between items-center p-4">
@@ -25,4 +25,4 @@ const Footer = () => {
     )
 }
 
-export default Footer;
+export default FooterLayout;

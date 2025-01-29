@@ -1,24 +1,15 @@
 import { Bars3Icon, ChevronDownIcon, XMarkIcon } from '@heroicons/react/16/solid';
 import { Dialog, DialogPanel, Disclosure, DisclosureButton, DisclosurePanel, Popover, PopoverButton, PopoverGroup, PopoverPanel } from '@headlessui/react';
 import { useState } from 'react';
-import Login from '../modals/Login-Register';
-import { useGlobalStore } from '../../hooks';
+import { Link } from 'react-router-dom';
 
-
-const Header = () => {
+const HeaderLayout = () => {
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
-
-    const { setToggleModal, setOpenLogin } = useGlobalStore();
-
-    const handleOpenModalLogin = ():void => {
-        setToggleModal();
-        setOpenLogin();
-    }
     
     return (
         <>
-            <header className='bg-dark text-white fixed top-0 left-0 w-full z-50'>
+            <header className='bg-dark text-white fixed top-0 left-0 w-full z-50 border-b-2 border-b-gray-400'>
                 <nav className='mx-auto flex max-w-7x1 items-center justify-between p-6 lg:px-8'>
                     <div className="flex lg:flex-1">
                         <a href="" className="-m-1.5 p-1.5">
@@ -96,9 +87,9 @@ const Header = () => {
                     </PopoverGroup >
 
                     <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                        <a href="#" onClick={() => handleOpenModalLogin() } className="text-sm/6 font-semibold ">
+                        <Link to={'/auth/login'} className="text-sm/6 font-semibold ">
                             Log in <span aria-hidden="true">&rarr;</span>
-                        </a>
+                        </Link>
                     </div>
                 </nav>
 
@@ -164,12 +155,12 @@ const Header = () => {
                                     </a>
                                 </div>
                                 <div className="py-6">
-                                    <button
-                                        onClick={() => handleOpenModalLogin() }
+
+                                    <Link to={'/auth/login'}
                                         className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold  hover:bg-gray-50"
                                     >
                                         Log in
-                                    </button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -177,10 +168,10 @@ const Header = () => {
                 </Dialog>
             </header>
 
-            <Login />
+      
 
         </>
     )
 }
 
-export default Header
+export default HeaderLayout;
