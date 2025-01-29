@@ -1,175 +1,51 @@
-import { Bars3Icon, ChevronDownIcon, XMarkIcon } from '@heroicons/react/16/solid';
-import { Dialog, DialogPanel, Disclosure, DisclosureButton, DisclosurePanel, Popover, PopoverButton, PopoverGroup, PopoverPanel } from '@headlessui/react';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const HeaderLayout = () => {
 
-    const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
-    
     return (
         <>
-            <header className='bg-dark text-white fixed top-0 left-0 w-full z-50 border-b-2 border-b-gray-400'>
-                <nav className='mx-auto flex max-w-7x1 items-center justify-between p-6 lg:px-8'>
-                    <div className="flex lg:flex-1">
-                        <a href="" className="-m-1.5 p-1.5">
-                            <span className="sr-only">Mi empresa</span>
-                            <img
-                                alt=""
-                                src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
-                                className="h-8 w-auto"
-                            />
-                        </a>
-                    </div>
-
-                    <div className="flex lg:hidden">
+            <nav className="fixed w-full z-20 top-0 start-0 border-b border-gray-600 bg-gray-900">
+                <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                    <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
+                        <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" />
+                        <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">Flowbite</span>
+                    </a>
+                    <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                        <Link
+                            to={'/auth/login'}
+                            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-0 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center">
+                            Iniciar sesión
+                        </Link>
                         <button
-                            onClick={() => setMobileMenuOpen(true)}
-                            className="m-2.5 inline-flex items-center rounded-md p-2.5 text-gray-700">
+                            data-collapse-toggle="navbar-sticky"
+                            type="button"
+                            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                            aria-controls="navbar-sticky"
+                            aria-expanded="false">
                             <span className="sr-only">Open main menu</span>
-                            <Bars3Icon aria-hidden="true" className="size-6" />
+                            <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+                            </svg>
                         </button>
                     </div>
-
-                    <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-                        <Popover className='relative'>
-                            <PopoverButton className="flex items-center gap-x-1 text-sm/6 font-semibold ">
-                                Product
-                                <ChevronDownIcon aria-hidden="true" className="size-5 flex-none text-gray-400" />
-                            </PopoverButton>
-
-                            <PopoverPanel
-                                transition
-                                className="absolute top-full -left-8 z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-dark ring-1 shadow-lg ring-dark/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
-                            >
-                                <div className="p-4">
-
-                                    <div
-
-                                        className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-gray-50"
-                                    >
-                                        <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-
-                                        </div>
-                                        <div className="flex-auto">
-                                            <a href='#' className="block font-semibold ">
-                                                Item 1
-                                                <span className="absolute inset-0" />
-                                            </a>
-                                            <p className="mt-1 text-gray-600">descripcion</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-
-                                    <a
-
-                                        href='#'
-                                        className="flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold  hover:bg-gray-100"
-                                    >
-                                        nombre
-                                    </a>
-
-                                </div>
-                            </PopoverPanel>
-                        </Popover>
-
-                        <a href="#" className="text-sm/6 font-semibold ">
-                            Features
-                        </a>
-                        <a href="#" className="text-sm/6 font-semibold ">
-                            Marketplace
-                        </a>
-                        <a href="#" className="text-sm/6 font-semibold ">
-                            Company
-                        </a>
-                    </PopoverGroup >
-
-                    <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                        <Link to={'/auth/login'} className="text-sm/6 font-semibold ">
-                            Log in <span aria-hidden="true">&rarr;</span>
-                        </Link>
+                    <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                        <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
+                            <li>
+                                <a href="#" className="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Home</a>
+                            </li>
+                            <li>
+                                <a href="#" className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
+                            </li>
+                            <li>
+                                <a href="#" className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Services</a>
+                            </li>
+                            <li>
+                                <a href="#" className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
+                            </li>
+                        </ul>
                     </div>
-                </nav>
-
-                <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
-                    <div className="fixed inset-0 z-10" />
-                    <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-                        <div className="flex items-center justify-between">
-                            <a href="#" className="-m-1.5 p-1.5">
-                                <span className="sr-only">Your Company</span>
-                                <img
-                                    alt=""
-                                    src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
-                                    className="h-8 w-auto"
-                                />
-                            </a>
-                            <button
-                                type="button"
-                                onClick={() => setMobileMenuOpen(false)}
-                                className="-m-2.5 rounded-md p-2.5 text-gray-700"
-                            >
-                                <span className="sr-only">Close menu</span>
-                                <XMarkIcon aria-hidden="true" className="size-6" />
-                            </button>
-                        </div>
-                        <div className="mt-6 flow-root">
-                            <div className="-my-6 divide-y divide-gray-500/10">
-                                <div className="space-y-2 py-6">
-                                    <Disclosure as="div" className="-mx-3">
-                                        <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold  hover:bg-gray-50">
-                                            Product
-                                            <ChevronDownIcon aria-hidden="true" className="size-5 flex-none group-data-open:rotate-180" />
-                                        </DisclosureButton>
-                                        <DisclosurePanel className="mt-2 space-y-2">
-
-                                            <DisclosureButton
-
-                                                as="a"
-                                                href='#'
-                                                className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold  hover:bg-gray-50"
-                                            >
-                                                nombre
-                                            </DisclosureButton>
-
-                                        </DisclosurePanel>
-                                    </Disclosure>
-                                    <a
-                                        href="#"
-                                        className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold  hover:bg-gray-50"
-                                    >
-                                        Features
-                                    </a>
-                                    <a
-                                        href="#"
-                                        className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold  hover:bg-gray-50"
-                                    >
-                                        Marketplace
-                                    </a>
-                                    <a
-                                        href="#"
-                                        className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold  hover:bg-gray-50"
-                                    >
-                                        Company
-                                    </a>
-                                </div>
-                                <div className="py-6">
-
-                                    <Link to={'/auth/login'}
-                                        className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold  hover:bg-gray-50"
-                                    >
-                                        Log in
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </DialogPanel>
-                </Dialog>
-            </header>
-
-      
-
+                </div>
+            </nav>
         </>
     )
 }

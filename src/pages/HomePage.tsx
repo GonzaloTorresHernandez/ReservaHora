@@ -4,17 +4,14 @@ import HeaderLayout from '../layouts/HeaderLayout';
 const HomePage = () => {
   return (
     <>
-      <HeaderLayout />  
+        <HeaderLayout />
 
-      <main className='m-16'>
-      Home
-      </main>
+        <main className='m-10'>
+          Home
+        </main>
 
-      <FooterLayout />
-
-
+        <FooterLayout />
     </>
-
   )
 }
 
