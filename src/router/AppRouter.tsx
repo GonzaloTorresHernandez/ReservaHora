@@ -4,13 +4,14 @@ import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/auth/LoginPage";
 import RegisterPage from "../pages/auth/RegisterPage";
 import AuthLayout from "../layouts/AuthLayout";
+import { useCheckAuth } from "../hooks";
 
 
 export const AppRouter = () => {
 
     // const status :string = 'authenticated';
 
-    const { status } = useAuthStore();
+    const { status } = useCheckAuth();
 
 
     return (
