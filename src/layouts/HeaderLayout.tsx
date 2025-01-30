@@ -1,6 +1,14 @@
 import { Link } from 'react-router-dom';
+import { useAuthStore } from '../hooks';
+import { Button } from '@headlessui/react';
 
 const HeaderLayout = () => {
+
+    const { status, startLogout } = useAuthStore();
+
+    const handleSalir = (): void => {
+        startLogout();
+    }
 
     return (
         <>
@@ -11,11 +19,21 @@ const HeaderLayout = () => {
                         <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">Flowbite</span>
                     </a>
                     <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-                        <Link
-                            to={'/auth/login'}
-                            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-0 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center">
-                            Iniciar sesión
-                        </Link>
+                        {
+                            status !== 'authenticated'
+                                ? <Link
+                                    to={'/auth/login'}
+                                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-0 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center">
+                                    Iniciar sesión
+                                </Link>
+                                :
+                                <Button
+                                onClick={ () => handleSalir() }
+                                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-0 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center">
+                                Salir
+                            </Button>
+                        }
+
                         <button
                             data-collapse-toggle="navbar-sticky"
                             type="button"
